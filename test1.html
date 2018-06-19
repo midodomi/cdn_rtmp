@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<input type="button" value=" ^a         ^b ^l  ^b ^`     ^a   ^o ^f   ^n" onClick="create_broadcast()" />
+<input type="button" value="get address" onClick="get_address()" />
+<script>
+function create_broadcast()
+{
+    $.ajax({
+    type: "POST",
+    url: 'http://188.246.227.132:18080/broadcasts',
+    data: {
+            'access_token': 'qwerty',
+            'stream_url_rtmp': 'rtmp://188.246.227.132/live/stream'
+          }
+    });
+}
+function get_address(){
+    $.ajax({
+    type: "POST",
+    url: 'http://188.246.227.132:18080/broadcasts/0/viewers',
+    data: {
+            'access_token': 'qwerty',
+            'stream_type': 'rtmp'
+          }
+    success: function(data)
+    {
+               alert(data);
+    }
+    });
+}
+</script>
+</body>
+</html>
